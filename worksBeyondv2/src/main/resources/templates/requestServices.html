@@ -1,0 +1,54 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layout">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="content">
+
+<div class="container">
+<h3>FAQ</h3>
+
+<a href="/uploadDocument" th:href="@{/uploadDocument}"> Upload Document</a>
+<br></br>
+<a href="/search" th:href="@{/search}"> Search for document</a>
+<br></br>
+<a href="/search" th:href="@{/registerUser}"> add User</a>
+<br></br>
+<a href="/search" th:href="@{/searchUsers}"> Search for Users</a>
+
+ </div>
+
+
+
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

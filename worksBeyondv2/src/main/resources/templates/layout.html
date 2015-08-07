@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  lang="pt-BR" id="ng-app" ng-app="">
+  <head>
+    <title>Layout page</title>
+    <script src="common-script.js"></script>
+    <script src="../js/angular.min.js" th:href="@{/js/angular.min.js}"></script>
+     
+    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="../css/project_style.css" th:href="@{/css/project_style.css}" />
+
+ </head>
+  <body>
+    <div class="container">
+    
+      <div class="masthead">
+  <h3>WorksBeyond</h3>
+ </div>
+ <!-- Static navbar -->
+    <div class="navbar navbar-default cust-proxima" role="navigation">
+        <div class="container-fluid">
+        
+             <div class="navbar-collapse collapse cust-proxima">
+                <ul class="nav navbar-nav navbar-default">
+                    <li><a href="/" th:href="@{/}">Home</a></li>
+                    <li><a href="/ourStory" th:href="@{/ourStory}"> Our Story </a></li>
+                    <li><a href="/whoWeServe" th:href="@{/whoWeServe}"> Who We Serve</a></li>
+                    <li><a href="/requestServices" th:href="@{/requestServices}">Request Services</a></li>
+                    <li><a href="/search" th:href="@{/search}">Search Publications</a></li>
+                 	<li><a href="/faq" th:href="@{/faq}">FAQ</a></li>
+                    <li><a href="/contactUs" th:href="@{/contactUs}">Contact Us</a></li>
+                    <li class="pull-right" sec:authorize="isAnonymous()"><a href="/login" th:href="@{/login}">Login</a></li>
+                    <li class="pull-right"  sec:authorize="isAnonymous()"><a href="/registerUser" th:href="@{/registerUser}">Sign Up</a></li>
+                    
+                    <!-- Authenticated User -->
+                    <div class="nav navbar-nav pull-right" sec:authorize="isAuthenticated()">
+                    	<li><a th:text="|Welcome ${#authentication.name}!|"></a></li>
+                    	<li><a href="/UserProfile" th:href="@{/UserProfile}">Profile</a></li>
+               			<li><a href="/logout" th:href="@{/logout}">Logout</a></li>
+                    </div>
+                </ul>
+               
+                	
+                
+                
+               
+                
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </div>
+</div>
+   
+    
+    <section layout:fragment="content">
+      <p>Page content goes here</p>
+    </section>
+    
+    
+    
+    
+    
+    <footer>
+      <p>template footer here</p>
+      <p layout:fragment="custom-footer"></p>
+    </footer>  
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+ <script type="text/css" src="../js/jquery-1.11.1.min.js" th:href="@{/js/jquery-1.11.1.min.js}"></script>
+ <!-- Include all compiled plugins (below), or include individual files as needed -->
+ <script type="text/css" src="../js/bootstrap.min.js" th:href="@{/js/bootstrap.min.js}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="UserProfile">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="user-content">
+<br />
+<div class="container">
+
+
+	<div class="row col-md-6 col-md-offset-4"><!-- Update status box -->
+	<form action="#" method="post" role="form" enctype="multipart/form-data" >
+		<div class="panel panel-default">
+			<div class="panel-heading">Update Status</div>
+			<div class="panel-body">
+				<textarea name="message" cols="40" rows="10" id="status_message" class="form-control" style="height:62px; overflow:hidden;" placeholder="Whats up?"></textarea>
+			</div>	
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-offset-10">
+						<input type="submit" name="submit" value="Post" class="btn btn-primary"/>
+					</div>
+				</div>
+			</div>
+		</div>
+			</form>
+	</div><!-- Update status box -->
+
+
+
+</div>
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

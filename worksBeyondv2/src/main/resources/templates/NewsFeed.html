@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="UserProfile">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="user-content">
+<br />
+<div class="container">
+
+
+	<div class="row col-md-6 col-md-offset-4"><!-- Update status box -->
+	<form action="#" method="post" role="form" enctype="multipart/form-data" >
+		<div class="panel panel-default">
+			<div class="panel-heading">Update Status</div>
+			<div class="panel-body">
+				<textarea name="message" cols="40" rows="10" id="status_message" class="form-control" style="height:62px; overflow:hidden;" placeholder="Whats up?"></textarea>
+			</div>	
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-offset-10">
+						<input type="submit" name="submit" value="Post" class="btn btn-primary"/>
+					</div>
+				</div>
+			</div>
+		</div>
+			</form>
+	</div><!-- Update status box -->
+
+
+<div th:if="!${#lists.isEmpty(miniFeed)}">
+	<table class="table">	
+		<tr th:each="Post : ${miniFeed}">
+		<td> 
+			<div class="media"> <!-- Posts on your wall -->
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object" src="..." alt="..."/>
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading" th:text="${Post.userName}">username</h4>
+				<a href="/search" th:href="@{/user/_${Post.userName}_}" th:text="${Post.content}"></a>
+				<div th:text="${Post.content}" ></div>
+			</div>
+		</div>
+
+		</td>
+</tr>
+	</table>
+</div>	
+
+<div th:if="${#lists.isEmpty(miniFeed)}">
+<div class="media"> <!-- Posts on your wall -->
+		<div class="media-left">
+			<a href="#">
+				<img class="media-object" src="..." alt="..."/>
+			</a>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">User name</h4>
+			No posts loaded.
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+</div>
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ xmlns:form="http://www.springframework.org/tags/form"
+  layout:decorator="layout">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Register User</title>
+  
+  </head>
+  <body>
+  	<section layout:fragment="content">
+	<div class="container">
+	<div class="row">
+		<div class="green-text col-md-6 col-md-offset-3 text-center"><h1> Register User</h1></div>
+	</div>
+	
+<!-- <div ng-app="" ng-controller="validateCtrl"> -->
+
+
+	<form class ="form-horizontal" action="#" th:action="@{/saveUser}" th:object="${user}" ng-app="" ng-controller="validateCtrl" name="myForm" novalidate="true" method="post"   enctype="multipart/form-data">
+	<fieldset>
+	
+	<div class=	"row">
+		<div class="form-group form-group-lg">
+		<div class="col-md-3 col-md-offset-3">
+			<input type="text" th:field="*{firstName}" class="form-control" name="name" required="true" placeholder="First Name"/>
+		</div>
+		
+		
+		
+		<div class="col-md-3">
+			<input type="text" th:field="*{lastName}" class="form-control" name="name" required="true" placeholder="Last Name"/>
+		</div>
+		</div>
+	</div>
+	
+	
+		<div class="form-group form-group-lg">
+		<div class="col-md-6 col-md-offset-3">
+			<input type="text" th:field="*{email}" class="form-control" placeholder="Email Address"/>
+		</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+		<div class="col-md-6 col-md-offset-3">
+			<input type="password" th:field="*{password}" class="form-control" placeholder="password"/>
+		</div>
+		</div>
+		
+		
+		<div class="form-group form-group-lg">
+		<div class="col-md-6 col-md-offset-3">
+			<input type="password" class="form-control" placeholder="retype password"/>
+		</div>
+		</div>
+		
+		<div class="form-group form-group-lg">
+		<div class="col-md-6 col-md-offset-3">
+			<input class="btn btn-block btn-default" type="submit" value= "Register User"/> 
+		</div>
+		</div>
+	      
+    </fieldset>
+    
+    </form>
+  </div> 
+
+
+
+ <h3>User List</h3>
+ 
+ <div th:if="!${#lists.isEmpty(userList)}">
+<table class="table table-hover">
+<tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Age</th>
+    <th>Username</th>
+    
+    <th>&nbsp;</th>
+</tr>
+
+    <tr th:each="user : ${userList}">
+        <td th:text="${user.firstName}"  width="100px">name</td>    
+        <td th:text="${user.lastName}"  width="100px">name</td>    
+        <td th:text="${user.age}"  width="100px">name</td>    
+        <td th:text="${user.username}"  width="100px">name</td>    
+       
+        
+        <td width="20px">
+        <!-- FIX LINKS TO GET TO THE CONTROLLER. LOOK UP THYMELEAF HYPERLINKS -->
+            <a href="${pageContext.request.contextPath}/download/${user.nodeId}.html">  
+           <span class="glyphicon glyphicon-save" title="Download this document"></span></a> 
+         
+            <a href= "remove.html" th:href="@{/remove/user/{userId} (userId=${user.userId})}"
+                onclick="return confirm('Are you sure you want to delete this user?')">
+                <span class="glyphicon glyphicon-remove" title="Delete this document"></span>
+                </a> 
+                
+                <!-- <a href= "deleteEverything.html" th:href="@{/deleteEverything}" 
+                onclick= "return confirm('you sure?')">delete everything </a> -->
+        </td>
+    </tr>
+</table>
+
+ </div>
+ <div th:if="${#lists.isEmpty(userList)}">
+ There are no Users Available
+ </div>
+ 
+
+
+ </section>
+</body>
+</html>
+
+
+
+
+
+
+
+

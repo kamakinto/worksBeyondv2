@@ -1,0 +1,72 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ xmlns:form="http://www.springframework.org/tags/form"
+  layout:decorator="layout">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>Search Publications</title>
+</head>
+<body>
+<section layout:fragment="content">
+<div class="container">
+	<div align="center" class="green-text">
+	<h1> Search Publications</h1>
+	</div>
+		<div align="center">
+			<form action="#" th:action="@{/search}"  method="post">
+		<input type="text"  name="name" id="name"> </input>
+			
+			
+				<input type="submit" value="search"></input>
+			
+			</form>
+		</div>
+		
+</div>		
+		
+		<div class="green-text"><h3>Document Search Results</h3></div>
+
+<div th:if="!${#lists.isEmpty(publicationList)}">
+<table class="table table-hover">
+<tr th:each="doc: ${publicationList}">
+	<td>
+	<p th:text="${doc.name}" width="100px"> </p>
+	<p th:text="${doc.author}" width="100px"> </p>
+	<p th:text="${doc.description}" width="100px"> </p>
+	</td>
+</tr>
+
+</table>
+
+
+
+</div>
+<div th:if="${#lists.isEmpty(publicationList)}">
+No Search Results!!
+
+</div>
+
+
+
+
+ <!-- <c:if  test="${!empty publicationList}">
+<table class="table table-hover">
+
+<c:forEach items="${publicationList}" var="document">
+    <tr>
+       <td width="100px">
+        <p><a href="${pageContext.request.contextPath}/publication/${document.id}.html">${document.name}</a></p>
+        	<p>${document.author}</p>
+          <p>${document.description}</p> 
+       </td>
+   </tr>
+</c:forEach> 
+</table>
+</c:if>  -->
+
+</section>
+</body>
+</html>

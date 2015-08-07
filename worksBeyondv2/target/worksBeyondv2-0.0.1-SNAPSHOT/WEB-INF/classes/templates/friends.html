@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="UserProfile">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="user-content">
+<div class="container">
+<div class="col-md-12">
+	<div class="col-md-3">
+		<h4>Friends List</h4>
+			
+	</div>
+	
+	<div class="col-md-3">
+		<h4>Your Friend Requests</h4>
+			<div th:if="!${#lists.isEmpty(friendRequests)}">
+				<table class="table">	
+					<tr th:each="friend : ${friendRequests}">
+					<td> 
+						<div class="media"> <!-- Posts on your wall -->
+						<div class="media-left">
+							<a href="#">
+								<img class="media-object" src="..." alt="..."/>
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading" >username</h4>
+							<div th:text="${friend.firstName}" ></div>
+						</div>
+					</div>
+			
+					</td>
+					<td> 
+					<a  href= "addFriend.html" th:href="@{/add/friend/{friendId} (friendId=${friend.userId})}">
+						
+			               <span class="glyphicon glyphicon-remove" title="add this user"></span>
+			                </a> 
+					</td>
+					</tr>
+				</table>
+			</div>	
+			
+			<div th:if="${#lists.isEmpty(friendRequests)}">
+			<div class="media"> <!-- Posts on your wall -->
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="..." alt="..."/>
+						</a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">User name</h4>
+						You have no friends!
+					</div>
+				</div>
+			</div>	
+				</div>
+				
+	<div class="col-md-3">
+		<h4> Needs friend approval</h4>
+	</div>
+	
+	<div class="col-md-3">
+		<h4> Current Users</h4>
+			<div th:if="!${#lists.isEmpty(allUsers)}">
+				<table class="table">	
+					<tr th:each="user : ${allUsers}">
+					<td> 
+						<div class="media"> <!-- Posts on your wall -->
+						<div class="media-left">
+							<a href="#">
+								<img class="media-object" src="..." alt="..."/>
+							</a>
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading" >username</h4>
+							<div th:text="${user.firstName}" ></div>
+						</div>
+					</div>
+			
+					</td>
+					<td> 
+					<a  href= "requestFriend.html" th:href="@{/request/friend/{friendId} (friendId=${user.userId})}">
+						
+			               <span class="glyphicon glyphicon-remove" title="add this user"></span>
+			                </a> 
+					</td>
+					</tr>
+				</table>
+			</div>
+			
+			<div th:if="${#lists.isEmpty(allUsers)}">
+			<div class="media"> <!-- Posts on your wall -->
+					<div class="media-left">
+						<a href="#">
+							<img class="media-object" src="..." alt="..."/>
+						</a>
+					</div>
+					<div class="media-body">
+						<h4 class="media-heading">User name</h4>
+						There are no users!
+					</div>
+				</div>
+			</div>	
+			
+			
+			
+			
+			
+			
+			
+		
+		
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

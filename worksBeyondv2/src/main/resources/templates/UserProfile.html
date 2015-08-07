@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layout">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="content">
+
+<div class="container">
+<div class="row">
+	<div class="col-md-3 well thumbnail">
+		<a href="#" class="thumbnail">
+      <img src="..." alt="..." />
+    </a>
+	</div>
+	<div class="col-md-6 col-md-offset-1 well">
+		<p th:text="${user.email}"> </p> 
+		<br />
+		<p th:text="${user.Quote}"></p>
+	<a class="pull-right" href="/edit" th:href="@{/editUserDetails}">Edit</a>
+	</div>
+
+</div>
+	  <div class=" row col-md-6 col-md-offset-4">
+		 <ul class="nav nav-tabs">
+		  <li role="presentation"><a href="/NewsFeed" th:href="@{/NewsFeed}">News Feed</a></li>
+		  <li role="presentation"><a href="/profile" th:href="@{/Profile}">Profile</a></li>
+		  <li role="presentation"><a href="/userPublications" th:href="@{/userPublications}">Publications</a></li>
+		  <li role="presentation"><a href="/friends" th:href="@{/friends}">Friends</a></li>
+		  <li role="presentation"><a href="/messages" th:href="@{/messages}">Messages</a></li>
+		</ul>
+   	</div>
+
+ </div><!-- Container Div -->
+			
+			
+			<section layout:fragment="user-content">
+		     
+		    </section>
+
+
+
+
+
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="layouts/layout.html">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+    <script src="content-script.js"></script>
+  </head>
+  <body>
+    <section layout:fragment="content">
+      <h1 th:text="${LastName}">mocking text</h1>
+    </section>
+    <footer>
+      <p layout:fragment="custom-footer">This is some footer content from content page 1</p>
+    </footer>
+  </body>
+</html>
+
+

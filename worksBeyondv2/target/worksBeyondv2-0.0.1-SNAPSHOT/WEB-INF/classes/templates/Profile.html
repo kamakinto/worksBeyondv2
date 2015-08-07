@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="UserProfile">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Content page 1</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="user-content">
+  <br />
+<div class="container">
+<div class="row">
+<div class= "col-md-3">
+	<div class="row">
+	<div class="col-md-12 well">
+		Major Details Section  testing data in info column testing data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+	</div>
+	</div>
+	
+	<div class="row">
+	<div class="col-md-12 well">
+	
+	Friends Blocks data in info column testing data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+		testing data in info columntesting data in info columntesting data in info columntesting data in info columntesting data in info column
+	
+	
+	</div>
+	
+	</div>
+	
+
+</div>
+	<div class="col-md-6 col-md-offset-1"><!-- Update status box -->
+	<form action="#" method="post" th:action="@{/postStatus}" th:object="${status}" role="form" enctype="multipart/form-data" >
+		<div class="panel panel-default">
+			<div class="panel-heading" th:text="${user.email}">Update Status</div>
+			<div class="panel-body">
+				<input name="message" cols="40" rows="10" th:field="*{content}" id="status_message" class="form-control" style="height:62px; overflow:hidden;" placeholder="Whats up?"></input>
+			</div>	
+			<div class="panel-footer">
+				<div class="row">
+					<div class="col-md-offset-10">
+						<input type="submit" name="submit" value="Post" class="btn btn-primary"/>
+					</div>
+				</div>
+			</div>
+		</div>
+			</form>
+	
+	
+<div th:if="!${#lists.isEmpty(profileWallPosts)}">
+	<table class="table">	
+		<tr th:each="wallPost : ${profileWallPosts}">
+		<td> 
+			<div class="media"> <!-- Posts on your wall -->
+			<div class="media-left">
+				<a href="#">
+					<img class="media-object" src="..." alt="..."/>
+				</a>
+			</div>
+			<div class="media-body">
+				<h4 class="media-heading" >username</h4>
+				<div th:text="${wallPost.content}" ></div>
+			</div>
+		</div>
+
+		</td>
+		<td> 
+		<a href= "remove.html" th:href="@{/remove/post/{postId} (postId=${wallPost.postId})}"
+                onclick="return confirm('Are you sure you want to delete this user?')">
+                <span class="glyphicon glyphicon-remove" title="Delete this document"></span>
+                </a> 
+		</td>
+		</tr>
+	</table>
+</div>	
+
+<div th:if="${#lists.isEmpty(profileWallPosts)}">
+<div class="media"> <!-- Posts on your wall -->
+		<div class="media-left">
+			<a href="#">
+				<img class="media-object" src="..." alt="..."/>
+			</a>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">User name</h4>
+			No posts loaded.
+		</div>
+	</div>
+</div>
+	
+	
+	
+	</div>
+			
+	</div><!-- Update status box -->
+	
+	
+
+
+
+
+
+
+
+
+</div><!-- container -->
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

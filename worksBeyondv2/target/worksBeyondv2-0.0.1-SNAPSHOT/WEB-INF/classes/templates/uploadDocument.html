@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ xmlns:form="http://www.springframework.org/tags/form"
+  layout:decorator="layout">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <head>
+    <title>Document Manager</title>
+  
+  </head>
+  <body>
+  <section layout:fragment="content">
+
+<div class="container">
+<div class="green-text"><h1> Document Manager</h1></div>
+<div ng-app="" ng-controller="validateCtrl">
+
+<form action="#" th:action="@{/save}" th:object="${document}" ng-app="" ng-controller="validateCtrl" name="myForm" novalidate="true" method="post"   enctype="multipart/form-data">
+<div class="form form-group">
+<table id="uploadInfo">
+
+<tr>
+<td><form:label for="name">Document Name </form:label></td>
+<td><input type="text" th:field="*{name}" class="form-control" name="name" required="true" placeholder="Publication Name"/></td>
+</tr>
+
+<tr>
+<td><form:label path="author">Author </form:label></td>
+<td><input type="text" th:field="*{author}" class="form-control" placeholder="Author(s) Name"/></td>
+</tr>
+
+<tr>
+<td><form:label path="description">Description </form:label></td>
+<td><textarea th:field="*{description}" class="form-control" rows="5" cols="100" maxlength="500"/></td>
+</tr>
+
+<tr>
+<td><form:label path="excerpt">Excerpt </form:label></td>
+<td><textarea th:field="*{excerpt}" class="form-control" rows="10" cols="100" maxlength="3000" /></td>
+</tr>
+
+
+
+
+
+<tr>
+	<td><form:label path="content">Document</form:label></td>
+   <td><input type="file" name="file" id="file" class="form-control"/></td>
+   
+ </tr>
+ <tr>
+ 	<td colspan="2"></td>
+     <td>  <input type="submit" value= " Add Document"/> </td>
+ </tr>
+       
+       
+       
+      </table> 
+       </div>
+    </form>
+</div>
+ <h3>Document List</h3>
+ 
+ <div th:if="!${#lists.isEmpty(documentList)}">
+<table class="table table-hover">
+<tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>&nbsp;</th>
+</tr>
+
+    <tr th:each="doc : ${documentList}">
+        <td th:text="${doc.name}"  width="100px">name</td>    
+        <td width="250px" th:text="${doc.description}">description</td>
+        
+        <td width="20px">
+        <!-- FIX LINKS TO GET TO THE CONTROLLER. LOOK UP THYMELEAF HYPERLINKS -->
+            <a href="${pageContext.request.contextPath}/download/${document.id}.html">  
+           <span class="glyphicon glyphicon-save" title="Download this document"></span></a> 
+         
+            <a href="${pageContext.request.contextPath}/remove/${document.id}.html"
+                onclick="return confirm('Are you sure you want to delete this document?')">
+                <span class="glyphicon glyphicon-remove" title="Delete this document"></span>
+                </a> 
+        </td>
+    </tr>
+</table>
+
+ </div>
+ <div th:if="${#lists.isEmpty(documentList)}">
+ There are no Documents Available
+ </div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ </div>
+
+
+
+</section>
+</body>
+</html>
+
+
+
+
+
+
+
+
